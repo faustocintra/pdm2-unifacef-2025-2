@@ -1,28 +1,31 @@
-import { View, Image, StyleSheet, Text, Button } from 'react-native';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import React from 'react';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 export default function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <Image source={require('../assets/logo.png')} style={styles.imagem} />
-      <Image
-        source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }}
-        style={{ width: 100, height: 100 }}
-      />
-      <FontAwesome name="home" size={40} color="blue" />
-      <Text style={styles.texto}>Página Inicial</Text>
-      <MaterialIcons name="punch-clock" size={64} color="black" />
-      <Button
-        title="Perfil"
-        onPress={() => navigation.navigate('Perfil')}
-      />
+      <Text style={styles.title}>Alyson Monteiro e Silva</Text>
+      <Text style={styles.subtitle}>Navegue para as telas:</Text>
+
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Internet')}>
+        <Text style={styles.buttonText}>Abrir Tela Internet</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Imagem')}>
+        <Text style={styles.buttonText}>Abrir Tela Imagem Local</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Icone')}>
+        <Text style={styles.buttonText}>Abrir Tela Ícones</Text>
+      </TouchableOpacity>
     </View>
   );
 }
-const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: 'center', alignItems: 'center' },
-  imagem: { width: 200, height: 200, resizeMode: 'contain' },
-  texto: { fontSize: 20, marginTop: 10 }
-});
 
+const styles = StyleSheet.create({
+  container: { flex: 1, alignItems: 'center', justifyContent: 'center', padding: 24, backgroundColor: '#f6f8fa' },
+  title: { fontSize: 22, fontWeight: '700', color: '#0d6efd', textAlign: 'center' },
+  subtitle: { fontSize: 16, color: '#444', marginVertical: 12, textAlign: 'center' },
+  button: { width: '100%', maxWidth: 320, backgroundColor: '#0d6efd', paddingVertical: 14, borderRadius: 10, marginTop: 10 },
+  buttonText: { color: '#fff', fontSize: 16, textAlign: 'center', fontWeight: '600' },
+});
